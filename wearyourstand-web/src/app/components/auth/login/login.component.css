@@ -1,0 +1,230 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  background-color: #1e3c72 !important;
+  margin-top: 80px;
+  position: relative;
+}
+
+/* Override any global body styles for this page */
+:host {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+}
+
+:host ::ng-deep body {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: none;
+  overflow: hidden;
+}
+
+.login-card mat-card-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  margin: -24px -24px 32px -24px;
+  padding: 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card mat-card-title {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  text-align: center !important;
+  display: block !important;
+  width: 100%;
+}
+
+.login-card mat-card-subtitle {
+  font-size: 1em;
+  color: #666;
+  margin: 0;
+  text-align: center !important;
+  display: block !important;
+  width: 100%;
+}
+
+.login-card mat-card-content {
+  padding: 0 24px 24px 24px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  margin-bottom: 8px;
+}
+
+mat-form-field .mat-mdc-form-field-subscript-wrapper {
+  margin-top: 8px;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px 24px 24px;
+  margin-top: 8px;
+}
+
+.card-actions p {
+  margin: 0;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.link {
+  color: #1e3c72;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.link:hover {
+  color: #2a5298;
+  background: #f8f9fa;
+  text-decoration: none;
+}
+
+/* Button Styling */
+mat-raised-button {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+  text-transform: none !important;
+  box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+}
+
+mat-raised-button:hover {
+  background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 60, 114, 0.4);
+}
+
+mat-raised-button:disabled {
+  background: #bdc3c7 !important;
+  color: #7f8c8d !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Form Field Styling */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field .mat-mdc-text-field-wrapper {
+  background-color: #f5f5f5 !important;
+  border-radius: 8px !important;
+}
+
+mat-form-field .mat-mdc-form-field-flex {
+  background-color: #f5f5f5 !important;
+}
+
+mat-form-field .mat-mdc-form-field-infix {
+  background-color: #f5f5f5 !important;
+}
+
+/* Additional overrides for Material Design */
+mat-form-field .mat-mdc-form-field-outline-start,
+mat-form-field .mat-mdc-form-field-outline-end,
+mat-form-field .mat-mdc-form-field-outline-gap {
+  background-color: #f5f5f5 !important;
+}
+
+mat-form-field .mat-mdc-form-field-outline {
+  background-color: #f5f5f5 !important;
+}
+
+mat-form-field .mat-mdc-form-field-outline {
+  color: #d0d0d0;
+}
+
+mat-form-field.mat-focused .mat-mdc-form-field-outline-thick {
+  color: #1e3c72;
+}
+
+mat-form-field .mat-mdc-form-field-label {
+  color: #666;
+}
+
+mat-form-field.mat-focused .mat-mdc-form-field-label {
+  color: #1e3c72;
+}
+
+mat-form-field .mat-mdc-input-element {
+  background-color: transparent !important;
+}
+
+/* Force grey background on all input elements */
+input[matInput] {
+  background-color: #f5f5f5 !important;
+}
+
+mat-form-field input {
+  background-color: #f5f5f5 !important;
+}
+
+/* Loading Spinner */
+mat-spinner {
+  margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px 16px;
+  }
+  
+  .login-card {
+    margin: 0;
+  }
+  
+  .login-card mat-card-header {
+    margin: -16px -16px 24px -16px;
+    padding: 24px 16px;
+  }
+  
+  .login-card mat-card-title {
+    font-size: 1.5em;
+  }
+  
+  .login-card mat-card-content {
+    padding: 0 16px 20px 16px;
+  }
+  
+  .card-actions {
+    padding: 0 16px 20px 16px;
+  }
+}

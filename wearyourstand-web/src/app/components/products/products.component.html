@@ -1,0 +1,86 @@
+<app-navigation></app-navigation>
+
+<div class="products-container">
+  <div class="products-header">
+    <h1>
+      <mat-icon>store</mat-icon>
+      Our Products
+    </h1>
+    
+    <div class="filters">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search products</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (input)="filterProducts()" placeholder="Search by name or description">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="sort-field">
+        <mat-label>Sort by</mat-label>
+        <mat-select [(ngModel)]="sortBy" (selectionChange)="sortProducts()">
+          <mat-option value="name">Name</mat-option>
+          <mat-option value="price-low">Price: Low to High</mat-option>
+          <mat-option value="price-high">Price: High to Low</mat-option>
+          <mat-option value="stock">Stock Quantity</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="products-grid" *ngIf="!loading; else loadingSpinner">
+    <mat-card class="product-card" *ngFor="let product of filteredProducts">
+      <div class="product-image">
+        <img *ngIf="getProductImage(product)" 
+             [src]="getProductImage(product)" 
+             [alt]="product.name" 
+             (error)="onImageError($event)"
+             (load)="onImageLoad($event)"
+             style="max-width: 100%; height: auto;"
+             [title]="'Image URL: ' + getProductImage(product)">
+        <div *ngIf="!getProductImage(product)" class="no-image-placeholder">
+          <mat-icon>image_not_supported</mat-icon>
+          <p>No Image</p>
+        </div>
+        <div class="stock-badge" [class.low-stock]="getTotalStockFromVariants(product) < 10">
+          <div class="stock-chip in-stock" *ngIf="getTotalStockFromVariants(product) > 0; else outOfStock">
+            {{ getTotalStockFromVariants(product) }} in stock
+          </div>
+          <ng-template #outOfStock>
+            <div class="stock-chip out-of-stock">Out of stock</div>
+          </ng-template>
+        </div>
+      </div>
+      
+      <mat-card-content>
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-price-section">
+          <div class="product-price">
+            <span class="price">₱{{ product.price | number:'1.2-2' }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions class="product-actions">
+        <button mat-raised-button 
+                (click)="viewDetails(product)"
+                class="view-details-btn">
+          <i class="fas fa-eye"></i>
+          View Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <ng-template #loadingSpinner>
+    <div class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Loading products...</p>
+    </div>
+  </ng-template>
+
+  <div class="no-products" *ngIf="!loading && filteredProducts.length === 0">
+    <mat-icon>inventory_2</mat-icon>
+    <h3>No products found</h3>
+    <p>Try adjusting your search or filter criteria</p>
+  </div>
+</div>

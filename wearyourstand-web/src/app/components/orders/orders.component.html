@@ -1,0 +1,69 @@
+<div class="orders-container">
+  <div class="orders-header">
+    <h1>
+      <mat-icon>receipt</mat-icon>
+      My Orders
+    </h1>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Loading orders...</p>
+  </div>
+
+  <div *ngIf="!loading && orders.length > 0" class="orders-list">
+    <mat-card class="order-card" *ngFor="let order of orders">
+      <mat-card-header>
+        <mat-card-title>
+          Order #{{ order.orderNumber }}
+          <mat-chip [color]="getStatusColor(order.status)">{{ order.status }}</mat-chip>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <mat-icon>calendar_today</mat-icon>
+          {{ order.orderDate | date:'medium' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="order-items">
+          <div class="order-item" *ngFor="let item of order.orderItems">
+            <div class="item-info">
+              <span class="item-name">{{ item.productName }}</span>
+              <span class="item-quantity">Qty: {{ item.quantity }}</span>
+            </div>
+            <div class="item-price">₱{{ item.totalPrice | number:'1.2-2' }}</div>
+          </div>
+        </div>
+        
+        <div class="order-total">
+          <strong>Total: ₱{{ order.total | number:'1.2-2' }}</strong>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="viewOrderDetails(order)">
+          <mat-icon>visibility</mat-icon>
+          View Details
+        </button>
+        <button mat-button *ngIf="canCancelOrder(order)" (click)="cancelOrder(order)" color="warn">
+          <mat-icon>cancel</mat-icon>
+          Cancel Order
+        </button>
+        <button mat-button *ngIf="order.status === 'Delivered'" (click)="reorder(order)">
+          <mat-icon>refresh</mat-icon>
+          Reorder
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0" class="no-orders">
+    <mat-icon>shopping_bag</mat-icon>
+    <h3>No orders yet</h3>
+    <p>Start shopping to see your orders here!</p>
+    <button mat-raised-button color="primary" routerLink="/products">
+      <mat-icon>store</mat-icon>
+      Browse Products
+    </button>
+  </div>
+</div>

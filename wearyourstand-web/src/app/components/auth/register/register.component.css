@@ -1,0 +1,358 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 60px 20px;
+  background-color: #fafafa;
+  margin-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.register-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  opacity: 0;
+}
+
+.register-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  opacity: 0;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 520px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.register-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.register-card mat-card-header {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  color: white;
+  margin: -24px -24px 32px -24px;
+  padding: 32px 24px;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.register-card mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.register-card mat-card-content {
+  padding: 0 24px 24px 24px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.half-width {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  margin-bottom: 8px;
+}
+
+mat-form-field .mat-mdc-form-field-subscript-wrapper {
+  margin-top: 8px;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px 24px 24px;
+  margin-top: 8px;
+}
+
+.card-actions p {
+  margin: 0;
+  text-align: center;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.link {
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  display: inline-block;
+}
+
+.link:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.4);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+}
+
+/* Button Styling */
+mat-raised-button {
+  height: 52px;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+  color: white !important;
+  box-shadow: 
+    0 8px 20px rgba(0, 212, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-transform: none !important;
+  letter-spacing: 0.5px;
+}
+
+mat-raised-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 25px rgba(0, 212, 255, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #00e5ff 0%, #00aacc 100%) !important;
+}
+
+mat-raised-button:active {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 15px rgba(0, 212, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+mat-raised-button:disabled {
+  transform: none;
+  box-shadow: none;
+  opacity: 0.5;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Form Field Styling - Complete Redesign */
+mat-form-field {
+  font-size: 1em;
+  width: 100%;
+  margin-bottom: 32px;
+  display: block;
+  position: relative;
+}
+
+/* Main form field container */
+mat-form-field .mat-mdc-form-field {
+  display: block;
+  position: relative;
+}
+
+/* Input wrapper - the actual input box */
+mat-form-field .mat-mdc-text-field-wrapper {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  margin-top: 20px !important; /* Space for the floating label */
+}
+
+mat-form-field .mat-mdc-text-field-wrapper:hover {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+mat-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  border-color: #00d4ff !important;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Form field infix - input container */
+mat-form-field .mat-mdc-form-field-infix {
+  padding: 0 !important;
+  border: none !important;
+  min-height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+}
+
+/* Floating Label - positioned outside the input */
+mat-form-field .mat-mdc-form-field-label {
+  position: absolute !important;
+  top: 0 !important;
+  left: 12px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.85em !important;
+  font-weight: 500 !important;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  padding: 4px 8px !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 4px !important;
+  pointer-events: none !important;
+}
+
+/* Label when focused or has value */
+mat-form-field.mat-focused .mat-mdc-form-field-label,
+mat-form-field.mat-form-field-has-value .mat-mdc-form-field-label {
+  color: #00d4ff !important;
+  transform: translateY(-12px) scale(0.9) !important;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Input element - clean styling */
+mat-form-field .mat-mdc-input-element {
+  color: white !important;
+  font-size: 1em !important;
+  padding: 16px 12px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+mat-form-field .mat-mdc-input-element::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Remove focus overlay */
+mat-form-field .mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+/* Error messages - positioned below input */
+mat-form-field .mat-mdc-form-field-error {
+  color: #ff6b6b !important;
+  font-size: 0.85em !important;
+  margin-top: 8px !important;
+  display: block !important;
+  position: relative !important;
+}
+
+mat-form-field .mat-mdc-form-field-hint {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.85em !important;
+  margin-top: 8px !important;
+  display: block !important;
+  position: relative !important;
+}
+
+/* Subscript wrapper */
+mat-form-field .mat-mdc-form-field-subscript-wrapper {
+  position: relative !important;
+  margin-top: 8px !important;
+  min-height: 20px !important;
+}
+
+/* Icon positioning */
+mat-form-field .mat-mdc-form-field-icon-suffix {
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  z-index: 1 !important;
+}
+
+/* Ensure proper spacing for the floating label system */
+mat-form-field .mat-mdc-form-field-flex {
+  position: relative !important;
+}
+
+/* Label wrapper positioning */
+mat-form-field .mat-mdc-form-field-label-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 20px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Loading Spinner */
+mat-spinner {
+  margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 20px 16px;
+  }
+  
+  .register-card {
+    margin: 0;
+  }
+  
+  .register-card mat-card-header {
+    margin: -16px -16px 20px -16px;
+    padding: 20px 16px;
+  }
+  
+  .register-card mat-card-title {
+    font-size: 1.5em;
+  }
+  
+  .register-card mat-card-content {
+    padding: 0 16px 20px 16px;
+  }
+  
+  .card-actions {
+    padding: 0 16px 20px 16px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

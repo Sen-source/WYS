@@ -1,0 +1,123 @@
+<app-navigation></app-navigation>
+
+<!-- Hero Section with Background Video/Image -->
+<div class="hero-banner">
+  <!-- Background Video -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/videos/fashion.mp4" type="video/mp4">
+    <!-- Fallback Image -->
+    <div class="hero-image-fallback" style="background-image: url('assets/images/background.jpg');"></div>
+  </video>
+  
+  <!-- Dark Overlay -->
+  <div class="hero-overlay"></div>
+  
+  <!-- Hero Content -->
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">Wear Your Stand</h1>
+      <h2 class="hero-subtitle">2025 Collection</h2>
+      <p class="hero-description">Express your unique style with our premium clothing collection. Quality meets fashion in every piece.</p>
+      <button mat-raised-button color="primary" class="shop-button" routerLink="/products">
+        <mat-icon>shopping_bag</mat-icon>
+        Shop Collection
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Products Section -->
+<div class="featured-section">
+  <div class="section-header">
+    <h2>Featured Products</h2>
+    <p>Discover our most popular items</p>
+  </div>
+  
+  <div class="products-grid" *ngIf="featuredProducts.length > 0">
+    <mat-card class="product-card" *ngFor="let product of featuredProducts">
+      <div class="product-image">
+        <img *ngIf="getProductImage(product)" 
+             [src]="getProductImage(product)" 
+             [alt]="product.name" 
+             (error)="onImageError($event)"
+             (load)="onImageLoad($event)"
+             [title]="'Image URL: ' + getProductImage(product)"
+             mat-card-image>
+        <div *ngIf="!getProductImage(product)" class="no-image-placeholder">
+          <mat-icon>image_not_supported</mat-icon>
+          <p>No Image</p>
+        </div>
+        <div class="product-overlay">
+          <button mat-fab color="primary" class="quick-view-btn" [routerLink]="['/products', product.id]">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-card-content>
+        <h3 class="product-title">{{ product.name }}</h3>
+        <p class="product-category">{{ product.category }}</p>
+        <p class="product-price">₱{{ product.price | number:'1.2-2' }}</p>
+      </mat-card-content>
+      <mat-card-actions class="product-actions">
+        <button mat-button color="primary" [routerLink]="['/products', product.id]" class="view-details-btn">
+          View Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="featuredProducts.length === 0 && !loading" class="empty-state">
+    <mat-icon class="empty-icon">inventory_2</mat-icon>
+    <h3>No products available</h3>
+    <p>Check back later for new arrivals!</p>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <mat-spinner></mat-spinner>
+    <p>Loading products...</p>
+  </div>
+</div>
+
+<!-- Categories Section -->
+<div class="categories-section">
+  <div class="section-header">
+    <h2>Shop by Category</h2>
+    <p>Find exactly what you're looking for</p>
+  </div>
+  
+  <div class="categories-grid">
+    <div class="category-card" *ngFor="let category of categories" [routerLink]="['/products']" [queryParams]="{category: category.name}">
+      <div class="category-icon">
+        <mat-icon>{{ category.icon }}</mat-icon>
+      </div>
+      <h3>{{ category.name }}</h3>
+      <p>{{ category.description }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="features-section">
+  <div class="features-grid">
+    <div class="feature-item">
+      <mat-icon class="feature-icon">local_shipping</mat-icon>
+      <h4>Free Shipping</h4>
+      <p>On orders over ₱1000</p>
+    </div>
+    <div class="feature-item">
+      <mat-icon class="feature-icon">verified</mat-icon>
+      <h4>Quality Guarantee</h4>
+      <p>Premium materials & craftsmanship</p>
+    </div>
+    <div class="feature-item">
+      <mat-icon class="feature-icon">refresh</mat-icon>
+      <h4>Easy Returns</h4>
+      <p>30-day return policy</p>
+    </div>
+    <div class="feature-item">
+      <mat-icon class="feature-icon">support_agent</mat-icon>
+      <h4>24/7 Support</h4>
+      <p>We're here to help</p>
+    </div>
+  </div>
+</div>

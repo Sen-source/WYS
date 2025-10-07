@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2022",
+    "moduleResolution": "node",
+    "paths": {
+      "@app/*": ["src/app/*"]
+    },
+    "strict": true,
+    "target": "es2022",
+    "useDefineForClassFields": false
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

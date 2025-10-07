@@ -1,0 +1,181 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+}
+
+.main-content {
+  min-height: calc(100vh - 200px);
+  padding: 0;
+  background-color: #fafafa;
+}
+
+.app-footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 60px 20px 30px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  align-items: flex-start;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.footer-section h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #ecf0f1;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95em;
+}
+
+.footer-section ul li a:hover {
+  color: #3498db;
+}
+
+.footer-section p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #bdc3c7;
+  margin-bottom: 12px;
+  font-size: 0.95em;
+}
+
+/* Social Media Links */
+.social-links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  font-size: 0.95em;
+}
+
+.social-link:hover {
+  color: #3498db;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-color: rgba(52, 152, 219, 0.3);
+  transform: translateY(-2px);
+}
+
+.social-link mat-icon {
+  font-size: 1.2em;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #34495e;
+  color: #95a5a6;
+  font-size: 0.9em;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* Badge Styling */
+mat-icon[matBadge] {
+  position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    padding: 0 15px;
+  }
+  
+  .app-footer {
+    padding: 40px 15px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .social-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    gap: 30px;
+    padding: 0 10px;
+  }
+  
+  .app-footer {
+    padding: 30px 10px 15px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.1em;
+  }
+  
+  .footer-section p {
+    font-size: 0.9em;
+  }
+  
+  .social-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

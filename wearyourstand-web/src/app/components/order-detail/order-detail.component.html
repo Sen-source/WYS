@@ -1,0 +1,110 @@
+<div class="order-detail-container">
+  <div class="header">
+    <button mat-icon-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Order Details</h1>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Loading order details...</p>
+  </div>
+
+  <div *ngIf="!loading && order" class="order-content">
+    <!-- Order Header -->
+    <mat-card class="order-header-card">
+      <mat-card-header>
+        <mat-card-title>Order #{{ order.orderNumber }}</mat-card-title>
+        <mat-card-subtitle>Placed on {{ order.orderDate | date:'medium' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="status-chips">
+          <mat-chip [color]="getStatusColor(order.status)" selected>
+            {{ order.status | titlecase }}
+          </mat-chip>
+          <mat-chip [color]="getPaymentStatusColor(order.paymentStatus)" selected>
+            Payment: {{ order.paymentStatus | titlecase }}
+          </mat-chip>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Order Items -->
+    <mat-card class="order-items-card">
+      <mat-card-header>
+        <mat-card-title>Order Items</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="order.orderItems && order.orderItems.length > 0; else noItems">
+          <div *ngFor="let item of order.orderItems" class="order-item">
+            <div class="item-info">
+              <h3>{{ item.productName }}</h3>
+              <p>Quantity: {{ item.quantity }}</p>
+              <p>Unit Price: ₱{{ item.unitPrice | number:'1.2-2' }}</p>
+            </div>
+            <div class="item-total">
+              <strong>₱{{ item.totalPrice | number:'1.2-2' }}</strong>
+            </div>
+          </div>
+        </div>
+        <ng-template #noItems>
+          <p>No items found in this order.</p>
+        </ng-template>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Order Summary -->
+    <mat-card class="order-summary-card">
+      <mat-card-header>
+        <mat-card-title>Order Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span>₱{{ order.subtotal | number:'1.2-2' }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax:</span>
+          <span>₱{{ order.tax | number:'1.2-2' }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span>₱{{ order.shippingCost | number:'1.2-2' }}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="summary-row total">
+          <span><strong>Total:</strong></span>
+          <span><strong>₱{{ order.total | number:'1.2-2' }}</strong></span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Addresses -->
+    <div class="addresses-container">
+      <!-- Shipping Address -->
+      <mat-card class="address-card" *ngIf="order.shippingAddress">
+        <mat-card-header>
+          <mat-card-title>Shipping Address</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ order.shippingAddress.street }}</p>
+          <p>{{ order.shippingAddress.city }}, {{ order.shippingAddress.state }} {{ order.shippingAddress.zipCode }}</p>
+          <p>{{ order.shippingAddress.country }}</p>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Billing Address -->
+      <mat-card class="address-card" *ngIf="order.billingAddress">
+        <mat-card-header>
+          <mat-card-title>Billing Address</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ order.billingAddress.street }}</p>
+          <p>{{ order.billingAddress.city }}, {{ order.billingAddress.state }} {{ order.billingAddress.zipCode }}</p>
+          <p>{{ order.billingAddress.country }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
